@@ -1,5 +1,5 @@
 <template lang="pug">
-#list.bg-dark.text-white.w-100.height.p-0.m-0
+#list.text-white.w-100.bgnheight.p-0.m-0
   b-container
     b-row.d-flex.justify-content-center
       //- b-col(cols='10')
@@ -24,8 +24,8 @@
           template(#cell(action)='data')
             span(v-if='!data.item.edit')
               //- 編輯按鈕
-              b-btn(@click='editlist(data.index)' variant='transparent').text-white
-                font-awesome-icon(:icon='["fas", "pen"]')
+              //- b-btn(@click='editlist(data.index)' variant='transparent').text-white
+              //-   font-awesome-icon(:icon='["fas", "pen"]')
               b-btn(@click='dellist(data.index)' variant='transparent').text-white
                 font-awesome-icon(:icon='["fas", "trash"]')
             span(v-else)
@@ -46,8 +46,8 @@
             tr(v-for='(item, idx) in finished' :key='idx')
               td
                 b-btn(@click='delfinish(idx)' variant='transparent').text-white
-                  font-awesome-icon(:icon='["fas", "trash"]')
-              td {{ item }}
+                  font-awesome-icon(:icon='["fas", "circle"]' style='font-size:10px')
+              td(style='text-decoration:line-through') {{ item }}
 </template>
 
 <script>
@@ -130,7 +130,8 @@ export default {
     height: 60vh;
     background: #707070;
   }
-  .height{
+  .bgnheight{
     height: calc(100vh - 166px);
+    background: #444444;
   }
 </style>

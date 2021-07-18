@@ -1,5 +1,5 @@
 <template lang="pug">
-#app(:class="clicked ? 'dark' : 'light'")
+#app(:class="isShow ? 'light' : 'dark'")
   b-navbar(type='light' variant='transparent')
     b-container.d-flex.justify-content-center.container-fluid
       //- b-row
@@ -12,15 +12,17 @@
       //- b-col(cols='2' class='p-0 d-flex justify-content-start align-items-center')
       //-   b-btn(variant='danger' @click='additem' style='height:50px; width:50px')
       //-     font-awesome-icon(:icon='["fas","plus"]')
-      b-col(cols='1' style='right:0;').position-absolute.mx-5
-        b-navbar-brand(to='/' variant='transparent' @click='clicked = false')
-          font-awesome-icon(:icon='["fas","home"]' style='color:#f44438;font-size:40px')
-      b-col(cols='1' style='right:0;').position-absolute.mx-2
+      //- b-col(cols='1' style='right:0;').position-absolute.mx-5
+      //-   b-navbar-brand(to='/' variant='transparent')
+      //-     font-awesome-icon(:icon='["fas","home"]' style='color:#f44438;font-size:40px')
+      b-col(cols='1' style='right:0px;').position-absolute.mx-5
         b-navbar-toggle(target='navbar-collapse')
         b-collapse#navbar-collapse(is-nav)
           b-navbar-nav
-            b-nav-item(to='/list' @click='clicked = true')
-              font-awesome-icon(:icon='["fas", "bars"]' style='color:#f44438;font-size:40px')
+            b-nav-item(v-if='isShow' to='/list' @click='toggle')
+              font-awesome-icon(:icon='["fas", "bars"]' style='color:#f44438;font-size:65px')
+            b-nav-item(v-else to='/' @click='toggle')
+              font-awesome-icon(:icon='["fas", "times"]' style='color:#f44438;font-size:65px')
         //- b-btn(to='/list' variant='transparent')
         //-   font-awesome-icon(:icon='["fas", "bars"]' style='color:#f44438;font-size:40px')
       //- b-btn(to='/' variant='success')
@@ -41,7 +43,7 @@ export default {
   data () {
     return {
       newitem: '',
-      clicked: false
+      isShow: true
     }
   },
   computed: {
@@ -77,6 +79,9 @@ export default {
           text: '必須要兩個字以上'
         })
       }
+    },
+    toggle () {
+      this.isShow = !this.isShow
     }
   }
 }
@@ -84,7 +89,7 @@ export default {
 
 <style>
   .dark{
-    background-color: #343a40;
+    background-color: #444444;
   }
   .light{
     background-color: #fff;
