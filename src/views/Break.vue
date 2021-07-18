@@ -4,10 +4,10 @@
     b-row(class='h-50 d-flex justify-content-center align-items-center')
       b-col(cols='3').d-flex.align-items-end
         h2 {{ currentText }}
-        h2 {{ timeText }}
+        h2
       b-col(cols='9' class='m-auto d-flex justify-content-center align-items-center')
         //- 暫停/停止時顯示撥放按鈕
-        b-btn(variant='danger' v-if='status !== 1' @click='start' size='lg' class='w-25 h-50 m-auto')
+        b-btn(to='/' variant='danger' v-if='status !== 1' @click='start' size='lg' class='w-25 h-50 m-auto')
           h1 {{ timeText }}
             font-awesome-icon(:icon='["fas", "play"]' class='ml-auto mt-5 btn-block')
         //- 倒數中顯示暫停按鈕
@@ -20,7 +20,7 @@
         b-btn(variant='primary' v-if='current.length > 0' @click='finish(true)' size='lg' class='w-25 h-50 m-auto')
           h1 {{ timeText }}
             font-awesome-icon(:icon='["fas", "step-forward"]')
-    b-row(class='p-0 bg-danger fixed-bottom')
+    b-row(class='p-0 bg-primary fixed-bottom')
       h1
 </template>
 
