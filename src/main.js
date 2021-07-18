@@ -9,12 +9,12 @@ import store from './store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheck, faPen, faUndo, faTrash, faPlay, faPause, faStepForward, faBars, faPlus, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPen, faUndo, faTrash, faPlay, faPause, faStepForward, faBars, faPlus, faHome, faCircle } from '@fortawesome/free-solid-svg-icons'
 
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
-library.add(faCheck, faPen, faUndo, faTrash, faPlay, faPause, faStepForward, faBars, faPlus, faHome)
+library.add(faCheck, faPen, faUndo, faTrash, faPlay, faPause, faStepForward, faBars, faPlus, faHome, faCircle)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

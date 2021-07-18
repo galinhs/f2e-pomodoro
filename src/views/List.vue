@@ -1,16 +1,16 @@
 <template lang="pug">
-#list(class='bg-dark text-white w-100' style='height:80vh')
-  b-container.d-flex.flex-column
-    b-row
+#list.bg-dark.text-white.w-100.height.p-0.m-0
+  b-container
+    b-row.d-flex.justify-content-center
       //- b-col(cols='10')
       //-   b-form-group(invalid-feedback='請至少輸入兩個字' :state='state' class='d-flex justify-content-around align-items-center')
       //-     b-form-input(v-model='newitem' :state='state' trim @keydown.enter='additem'  style='height:50px')
       //- b-col(cols='2' class='p-0 d-flex justify-content-start align-items-center')
       //-     b-btn(variant='danger' @click='additem' style='height:50px; width:50px')
       //-       font-awesome-icon(:icon='["fas","plus"]')
-      b-col(cols='6')
-        h1 All Tasks
-        b-table(:items='list' :fields='listfields').table-borderless
+      b-col(cols='5').my-5
+        h1.p-2 All Tasks
+        b-table(:items='list' :fields='listfields').table-borderless.text-white
           template(#cell(name)='data')
             b-form-input(
               v-if='data.item.edit'
@@ -24,28 +24,30 @@
           template(#cell(action)='data')
             span(v-if='!data.item.edit')
               //- 編輯按鈕
-              b-btn(@click='editlist(data.index)' variant='success')
+              b-btn(@click='editlist(data.index)' variant='transparent').text-white
                 font-awesome-icon(:icon='["fas", "pen"]')
-              b-btn(@click='dellist(data.index)' variant='danger')
+              b-btn(@click='dellist(data.index)' variant='transparent').text-white
                 font-awesome-icon(:icon='["fas", "trash"]')
             span(v-else)
-              b-btn(@click='changelist(data.index)' variant='success')
+              b-btn(@click='changelist(data.index)' variant='transparent').text-white
                 font-awesome-icon(:icon='["fas", "check"]')
-              b-btn(@click='cancellist(data.index)' variant='danger')
+              b-btn(@click='cancellist(data.index)' variant='transparent').text-white
                 font-awesome-icon(:icon='["fas", "undo"]')
-      b-col(cols='6')
+      b-col(cols='1').d-flex.align-items-center
+        .line
+      b-col(cols='5').my-5
         h1 Had done
-        b-table-simple.table-borderless
+        b-table-simple.table-borderless.text-white
           thead
             tr
-              th 名稱
-              th 操作
+              th
+              th
           tbody
             tr(v-for='(item, idx) in finished' :key='idx')
-              td {{ item }}
               td
-                b-btn(@click='delfinish(idx)' variant=danger)
+                b-btn(@click='delfinish(idx)' variant='transparent').text-white
                   font-awesome-icon(:icon='["fas", "trash"]')
+              td {{ item }}
 </template>
 
 <script>
@@ -55,8 +57,8 @@ export default {
     return {
       newitem: '',
       listfields: [
-        { key: 'name', label: '名稱' },
-        { key: 'action', label: '操作' }
+        { key: 'action', label: '操作' },
+        { key: 'name', label: '名稱' }
       ]
     }
   },
@@ -121,3 +123,14 @@ export default {
   }
 }
 </script>
+
+<style>
+  .line{
+    width: 3px;
+    height: 60vh;
+    background: #707070;
+  }
+  .height{
+    height: calc(100vh - 166px);
+  }
+</style>
